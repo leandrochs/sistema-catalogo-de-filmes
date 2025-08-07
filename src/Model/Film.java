@@ -1,38 +1,99 @@
 package Model;
 
-public class Film {
+import java.util.ArrayList;
+import java.util.List;
 
-    public String title;
-    public String director;
-    public int releaseYear;
-    public int durationMinutes;
-    public double budget;        // Orçamento
-    public String synopsis;      // Sinopse
-    public String genre;         // Gênero
+public class Film {
+    private String title;
+    private int releaseYear;
+    private Director director;  // Diretor como objeto
+    private String genre;  // Gênero do filme
+    private double budget;  // Orçamento do filme
+    private String synopsis; // Sinopse do filme
+    private int duration; // Duração do filme em minutos
 
     // Construtor
-    public Film(String title, String director, int releaseYear, int durationMinutes, double budget, String synopsis, String genre) {
+    public Film(String title, int releaseYear, Director director, String genre, double budget, String synopsis, int duration) {
         this.title = title;
-        this.director = director;
         this.releaseYear = releaseYear;
-        this.durationMinutes = durationMinutes;
+        this.director = director;  // Atribui o objeto Diretor
+        this.genre = genre;
         this.budget = budget;
         this.synopsis = synopsis;
-        this.genre = genre;
+        this.duration = duration;
     }
 
-    // Método para exibir detalhes do filme
+    // Métodos Getter necessários
+    public String getTitle() {
+        return title;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public Director getDirector() {
+        return director;  // Retorna o objeto Diretor
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public double getBudget() {
+        return budget;
+    }
+
+    public String getSynopsis() {
+        return synopsis;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    @Override
     public String toString() {
         return "Título: " + title + "\n" +
-                "Diretor: " + director + "\n" +
                 "Ano de lançamento: " + releaseYear + "\n" +
-                "Duração: " + durationMinutes + " minutos\n" +
+                "Diretor: " + director.getName() + "\n" +  // Exibe o nome do diretor
                 "Gênero: " + genre + "\n" +
                 "Orçamento: R$ " + budget + "\n" +
-                "Sinopse: " + synopsis;
+                "Sinopse: " + synopsis + "\n" +
+                "Duração: " + duration + " minutos";
+    }
+
+    public static void main(String[] args) {
+        // Criando o diretor
+        Director director1 = new Director("Quentin Tarantino");
+        Director director2 = new Director("Christopher Nolan");
+
+        // Criando filmes e associando os diretores
+        Film film1 = new Film("Pulp Fiction", 1994, director1, "Crime, Drama", 8_000_000, "A história de gangsters e vingança.", 154);
+        Film film2 = new Film("Inception", 2010, director2, "Sci-Fi, Thriller", 160_000_000, "Viagem intergaláctica para salvar a humanidade.", 148);
+
+        // Lista de filmes
+        List<Film> filmList = new ArrayList<>();
+        filmList.add(film1);
+        filmList.add(film2);
+
+        // Exibindo todos os filmes
+        for (Film film : filmList) {
+            System.out.println(film);
+            System.out.println("--------------------------------");
+        }
     }
 }
 
+class Director {
+    private String name;
 
+    // Construtor
+    public Director(String name) {
+        this.name = name;
+    }
 
-
+    public String getName() {
+        return name;
+    }
+}
