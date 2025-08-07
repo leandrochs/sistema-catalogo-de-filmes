@@ -2,13 +2,13 @@ package Model;
 
 public class Film {
 
-    private String title;
-    private String director;
-    private int releaseYear;
-    private int durationMinutes;
-    private double budget;        // Orçamento
-    private String synopsis;      // Sinopse
-    private String genre;         // Gênero
+    public String title;
+    public String director;
+    public int releaseYear;
+    public int durationMinutes;
+    public double budget;        // Orçamento
+    public String synopsis;      // Sinopse
+    public String genre;         // Gênero
 
     // Construtor
     public Film(String title, String director, int releaseYear, int durationMinutes, double budget, String synopsis, String genre) {
@@ -18,63 +18,6 @@ public class Film {
         this.durationMinutes = durationMinutes;
         this.budget = budget;
         this.synopsis = synopsis;
-        this.genre = genre;
-    }
-
-    // Métodos getter e setter
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public int getReleaseYear() {
-        return releaseYear;
-    }
-
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
-    }
-
-    public int getDurationMinutes() {
-        return durationMinutes;
-    }
-
-    public void setDurationMinutes(int durationMinutes) {
-        this.durationMinutes = durationMinutes;
-    }
-
-    public double getBudget() {
-        return budget;
-    }
-
-    public void setBudget(double budget) {
-        this.budget = budget;
-    }
-
-    public String getSynopsis() {
-        return synopsis;
-    }
-
-    public void setSynopsis(String synopsis) {
-        this.synopsis = synopsis;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
         this.genre = genre;
     }
 
