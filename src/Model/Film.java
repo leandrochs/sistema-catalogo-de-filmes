@@ -16,7 +16,7 @@ public class Film {
     public Film(String title, int releaseYear, Director director, String genre, double budget, String synopsis, int duration) {
         this.title = title;
         this.releaseYear = releaseYear;
-        this.director = director;  // Atribui o objeto Diretor
+        this.director = director;
         this.genre = genre;
         this.budget = budget;
         this.synopsis = synopsis;
@@ -34,22 +34,6 @@ public class Film {
 
     public Director getDirector() {
         return director;  // Retorna o objeto Diretor
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public double getBudget() {
-        return budget;
-    }
-
-    public String getSynopsis() {
-        return synopsis;
-    }
-
-    public int getDuration() {
-        return duration;
     }
 
     @Override
@@ -72,16 +56,10 @@ public class Film {
         Film film1 = new Film("Pulp Fiction", 1994, director1, "Crime, Drama", 8_000_000, "A história de gangsters e vingança.", 154);
         Film film2 = new Film("Inception", 2010, director2, "Sci-Fi, Thriller", 160_000_000, "Viagem intergaláctica para salvar a humanidade.", 148);
 
-        // Lista de filmes
-        List<Film> filmList = new ArrayList<>();
-        filmList.add(film1);
-        filmList.add(film2);
-
-        // Exibindo todos os filmes
-        for (Film film : filmList) {
-            System.out.println(film);
-            System.out.println("--------------------------------");
-        }
+        // Exibindo filmes
+        System.out.println(film1);
+        System.out.println("--------------------------------");
+        System.out.println(film2);
     }
 }
 
