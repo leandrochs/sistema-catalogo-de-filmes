@@ -1,5 +1,8 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Film {
     private final String title;
     private final String releaseYear;
@@ -8,7 +11,7 @@ public class Film {
     private final String gender;
     private final String duration;
     private Director director;
-    private Actor actor;
+    private List<Actor> actors = new ArrayList<>();
 
     public Film(String title, String releaseYear, String budget, String synopsis, String gender, String duration) {
         this.title = title;
@@ -19,7 +22,6 @@ public class Film {
         this.duration = duration;
     }
 
-    // Métodos Getter necessários
     public String getTitle() {
         return title;
     }
@@ -30,6 +32,18 @@ public class Film {
 
     public Director getDirector() {
         return director;  // Retorna o objeto Diretor
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public List<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(List<Actor> actors) {
+        this.actors = actors;
     }
 
     @Override
