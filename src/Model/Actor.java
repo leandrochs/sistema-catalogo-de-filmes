@@ -20,10 +20,8 @@ public class Actor {
 
     @Override
     public String toString() {
-        return "Actor{" +
-                "nome='" + name + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", nationality='" + nationality + '\'' +
-                '}';
+        return "Ator: " + name + "\n" +
+                "Data de Nascimento: " + birthday + "\n" +
+                "Nacionalidade: " + nationality + "\n";
     }
 }
