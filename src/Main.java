@@ -1,10 +1,18 @@
+import Controller.ActorController;
+import Controller.FilmController;
 import Menu.Menu;
+import Repository.ActorRepository;
+import Repository.FilmRepository;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World");
+        FilmRepository filmRepository = new FilmRepository();
+        FilmController filmController = new FilmController(filmRepository);
 
-        Menu menu = new Menu();
+        ActorRepository actorRepository = new ActorRepository();
+        ActorController actorController = new ActorController(actorRepository);
+
+        Menu menu = new Menu(filmController, actorController);
         menu.start();
 
     }
