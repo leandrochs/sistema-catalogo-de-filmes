@@ -46,32 +46,5 @@ public class Film {
                 "Sinopse: " + synopsis + "\n" +
                 "Duração: " + duration + " minutos";
     }
-
-    public static void main(String[] args) {
-        // Criando o diretor
-        Director director1 = new Director("Quentin Tarantino");
-        Director director2 = new Director("Christopher Nolan");
-
-        // Criando filmes e associando os diretores
-        Film film1 = new Film("Pulp Fiction", 1994, director1, "Crime, Drama", 8_000_000, "A história de gangsters e vingança.", 154);
-        Film film2 = new Film("Inception", 2010, director2, "Sci-Fi, Thriller", 160_000_000, "Viagem intergaláctica para salvar a humanidade.", 148);
-
-        // Exibindo filmes
-        System.out.println(film1);
-        System.out.println("--------------------------------");
-        System.out.println(film2);
-    }
 }
 
-class Director {
-    private String name;
-
-    // Construtor
-    public Director(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-}
