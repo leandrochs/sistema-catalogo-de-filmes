@@ -2,9 +2,9 @@ package Menu;
 
 import Controller.FilmController;
 import Model.Film;
-import Repository.FilmRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -232,46 +232,47 @@ public class Menu {
 //    System.out.println("Associação concluída");
 
     private void searchFilms() {
-//        System.out.println("==== Pesquisar Filmes ====");
-//        System.out.println("Escolha uma opção: ");
-//        System.out.println("---------------------");
-//        System.out.println("(A) Listar todos os filmes");
-//        System.out.println("(B) Pesquisar por palavra chave");
-//        System.out.println("(S) Sair");
-//        System.out.println("---------------------");
-//
-//        boolean running = true;
-//        while (running) {
-//            String option = scanner.next().toUpperCase();
+        System.out.println("==== Pesquisar Filmes ====");
+        System.out.println("Escolha uma opção: ");
+        System.out.println("---------------------");
+        System.out.println("(A) Listar todos os filmes");
+        System.out.println("(B) Pesquisar por palavra chave");
+        System.out.println("(S) Sair");
+        System.out.println("---------------------");
 
-//            switch (option) {
-//                case "A" -> {
-//                    List<Film> films = filmController.listAll();
-//                    if (films.isEmpty()) {
-//                        System.out.println("Nenhum filme cadastrado.");
-//                    } else {
-//                        for (Film film : films) {
-//                            System.out.println(film);
-//                        }
-//                    }
-//                }
-//                case "B" -> {
-//                    System.out.printf("Digite uma palavra-chave:");
-//                    String keyword = scanner.next();
-//                    List<Film> films = filmController.searchByName(keyword);
-//                    if (films.isEmpty()) {
-//                        System.out.println("Nenhum filme encontrado.");
-//                    } else {
-//                        for (Film film : films) {
-//                            System.out.println(film);
-//                        }
-//                    }
-//                }
-//                case "S" -> running = false;
-//
-//                default -> System.out.println("Opção inválida");
-//
-//            }
+        boolean running = true;
+        while (running) {
+            String option = scanner.next().toUpperCase();
+
+            switch (option) {
+                case "A" -> {
+                    List<Film> films = filmController.findAllFilms();
+                    if (films.isEmpty()) {
+                        System.out.println("Nenhum filme cadastrado.");
+                    } else {
+                        for (Film film : films) {
+                            System.out.println(film);
+                        }
+                    }
+                }
+                case "B" -> {
+                    System.out.printf("Digite uma palavra-chave:");
+                    String keyword = scanner.next();
+                    List<Film> films = filmController.findFilmsByKeyword(keyword);
+                    if (films.isEmpty()) {
+                        System.out.println("Nenhum filme encontrado.");
+                    } else {
+                        for (Film film : films) {
+                            System.out.println(film);
+                        }
+                    }
+                }
+                case "S" -> running = false;
+
+                default -> System.out.println("Opção inválida");
+
+            }
+        }
     }
 
 }

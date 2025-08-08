@@ -21,4 +21,11 @@ public class FilmRepository {
                 .findFirst()
                 .orElse(null);
     }
+
+    public List<Film> findByKeyword(String keyword) {
+        return films.stream()
+                .filter(film -> film.getTitle().toLowerCase().contains(keyword.toLowerCase()))
+                .toList();
+    }
+
 }
