@@ -14,6 +14,7 @@ public class ActorRepository {
 
     public List<Actor> findAll() {
         return new ArrayList<>(actors);
+
     }
 
     public Actor findByName(String name) {
@@ -28,4 +29,6 @@ public class ActorRepository {
                 .filter(actor -> actor.getName().toLowerCase().contains(keyword.toLowerCase()))
                 .toList();
     }
+
+
 }
