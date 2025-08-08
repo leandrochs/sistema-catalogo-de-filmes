@@ -1,5 +1,6 @@
 package Menu;
 
+import Controller.ActorController;
 import Controller.FilmController;
 import Model.Film;
 
@@ -9,10 +10,12 @@ import java.util.Scanner;
 
 public class Menu {
     private final FilmController filmController;
+    private final ActorController actorController;
     final Scanner scanner = new Scanner(System.in);
 
-    public Menu(FilmController filmController) {
+    public Menu(FilmController filmController, ActorController actorController) {
         this.filmController = filmController;
+        this.actorController = actorController;
     }
 
     public void start() {
@@ -108,15 +111,15 @@ public class Menu {
         String name = scanner.next();
 
         System.out.print("Data de nascimento (yyyy-MM-dd): ");
-        String dofText = scanner.next();
-        LocalDate dof = LocalDate.parse(dofText);
+        String birthday = scanner.next();
+        LocalDate birthdayDate = LocalDate.parse(birthday);
         //devemos criar uma exceção aqui?
 
         System.out.print("Nacionalidade: ");
         String nationality = scanner.next();
 
-        //actorController.cadastrarAtor(name, dof, nationality)
-        //System.out.println("Ator cadastrado com sucesso!");
+        actorController.createAndSaveActor(name, birthdayDate, nationality);
+        System.out.println("Ator cadastrado com sucesso!");
 
     }
 
