@@ -14,8 +14,8 @@ public class FilmController {
         return (Film) repository.findByTitle(title);
     }
 
-    public Film createAndSaveFilm(String title, String year, String budget, String synopsis, String gender, String time) {
-        Film film = new Film(title, year, budget, synopsis, gender, time);
+    public Film createAndSaveFilm(String title, String year, String budget, String synopsis, String gender, String duration) {
+        Film film = new Film(title, year, budget, synopsis, gender, duration);
         repository.saveFilm(film);
         return film;
     }

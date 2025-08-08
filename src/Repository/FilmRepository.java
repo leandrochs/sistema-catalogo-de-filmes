@@ -15,9 +15,9 @@ public class FilmRepository {
         return new ArrayList<>(films);
     }
 
-    public List<Film> findByTitle(String title) {
+    public Film findByTitle(String title) {
         return films.stream()
-                .filter(film -> film.getName().equalsIgnoreCase(title))
+                .filter(film -> film.getTitle().equalsIgnoreCase(title))
                 .findFirst()
                 .orElse(null);
     }
