@@ -25,7 +25,7 @@ public class ActorRepository {
 
     public List<Actor> findByKeyword(String keyword) {
         return actors.stream()
-                .filter(actor -> actor.getNome().toLowerCase().contains(keyword.toLowerCase()))
+                .filter(actor -> actor.getName().toLowerCase().contains(keyword.toLowerCase()))
                 .toList();
     }
 }

@@ -1,12 +1,14 @@
 package Model;
 
+import java.time.LocalDate;
+
 public class Actor {
     private final String name;
-    private final String birthday;
+    private final LocalDate birthday;
     private final String nationality;
 
 
-    public Actor(String name, String birthday, String nationality) {
+    public Actor(String name, LocalDate birthday, String nationality) {
         this.name = name;
         this.birthday = birthday;
         this.nationality = nationality;

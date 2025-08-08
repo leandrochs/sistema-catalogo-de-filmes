@@ -30,9 +30,3 @@ public class FilmController {
     }
 
 }
-
-
-/*
-(1) cadastrar filmes
-(6) pesquisar filme
-*/

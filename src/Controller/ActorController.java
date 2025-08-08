@@ -4,6 +4,7 @@ import Model.Actor;
 import Repository.ActorRepository;
 import Repository.FilmRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class ActorController {
@@ -21,7 +22,7 @@ public class ActorController {
         return repository.findByName(name);
     }
 
-    public void createAndSaveActor(String name, String birthday, String nationality) {
+    public void createAndSaveActor(String name, LocalDate birthday, String nationality) {
         Actor actor = new Actor(name, birthday, nationality);
         repository.saveActor(actor);
     }
