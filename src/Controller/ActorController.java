@@ -30,4 +30,5 @@ public class ActorController {
     public List<Actor> findActorsByKeyword(String keyword) {
         return repository.findByKeyword(keyword);
     }
+
 }

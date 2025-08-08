@@ -6,6 +6,7 @@ import Controller.FilmController;
 import Model.Actor;
 import Model.Director;
 import Model.Film;
+import Repository.FilmRepository;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -93,7 +94,7 @@ public class Menu {
         } else {
             System.out.print("Ano de lançamento: ");
             String year = scanner.nextLine();
-
+//          Esta recebendo String
             System.out.print("Orçamento: ");
             String budget = scanner.nextLine();
 
@@ -107,6 +108,7 @@ public class Menu {
             String duration = scanner.nextLine();
 
             filmController.createAndSaveFilm(title, year, budget, synopsis, gender, duration);
+            System.out.println();
             System.out.println("Filme cadastrado com sucesso!");
         }
     }
@@ -131,6 +133,7 @@ public class Menu {
             String nationality = scanner.next();
 
             actorController.createAndSaveActor(name, birthday, nationality);
+            System.out.println();
             System.out.println("Ator cadastrado com sucesso!");
 
         }
@@ -141,7 +144,7 @@ public class Menu {
 
         System.out.println("==== Cadastro de Diretor ====");
         System.out.print("Nome: ");
-        String name = scanner.next();
+        String name = scanner.nextLine();
 
         Director existingDirector = directorController.findDirectorByName(name);
 
@@ -157,6 +160,7 @@ public class Menu {
             String nationality = scanner.next();
 
             directorController.createAndSaveDirector(name, birthday, nationality);
+            System.out.println();
             System.out.println("Diretor cadastrado com sucesso!");
         }
 
@@ -180,96 +184,136 @@ public class Menu {
     }
 
     private void associateActorsAux() {
-//        System.out.println("==== Associar Atores a Filme ====");
-//        System.out.print("Insira o nome do filme: ");
-//        String nameFilm = scanner.next();
-//        List<Film> films = filmController.searchByName(nameFilm);
-//        if (films == null) {
-//            System.out.println("Filme não encontrado.");
-//            return;
-//        }
+        System.out.println("==== Associar Atores a Filme ====");
+        System.out.print("Insira o nome do filme: ");
+        String nameFilm = scanner.next();
+        Film films = filmController.findFilmByTitle(nameFilm);
+        if (films == null) {
+            System.out.println();
+            System.out.println("Filme não encontrado.");
+            return;
+        }
+
+        System.out.println("Filme encontrado:");
+
+        System.out.println("------------------------------------------------");
+        System.out.println(films);
+        System.out.println("------------------------------------------------");
+        System.out.print("Confirmar filme? (s/n): ");
+        if (!scanner.next().equalsIgnoreCase("s")) {
+            System.out.println();
+            System.out.println("Associação cancelada.");
+            return;
+        }
+
+        boolean addMore = true;
+
+        while (addMore) {
+            System.out.print("Insira o nome do ator: ");
+            scanner.nextLine();
+            String nameActor = scanner.nextLine();
+            Actor actor = actorController.findActorByName(nameActor);
+            if (actor == null) {
+                System.out.println();
+                System.out.println("Ator não encontrado.");
+
+                List<Actor> actorList = actorController.findAllActors();
+
+                System.out.println("Lista de atores cadastrados: ");
+                System.out.println("------------------------------------------------");
+                System.out.println(actorList);
+                System.out.println("------------------------------------------------");
+
+                return;
+            }
+
+
+            System.out.println("Ator encontrado:");
+            System.out.println("------------------------------------------------");
+            System.out.println(actor);
+            System.out.println("------------------------------------------------");
+            System.out.print("Confirmar ator? (s/n): ");
+            if (!scanner.next().equalsIgnoreCase("s")) {
+                System.out.println("Associação cancelada.");
+                return;
+            }
 //
-//        System.out.println("Filme encontrado:");
-//        System.out.println(film);
-//        System.out.print("Confirmar filme? (s/n): ");
-//        if (!scanner.next().equalsIgnoreCase("s")) {
-//            System.out.println("Associação cancelada.");
-//            return;
-//        }
 //
-//        boolean addMore = true;
+//            //TODO filmController.associarAtor(nameFilm, nameActor)
+            System.out.println("Ator associado com sucesso!");
 //
-//        while (addMore) {
-//            System.out.print("Insira o nome do ator: ");
-//            String nameActor = scanner.next();
-//            Actor actor = actorController.searchByName(nameActor);
-//            if (actor == null) {
-//                System.out.println("Ator não encontrado.");
-//                return;
-//            }
-//
-//            System.out.println("Ator encontrado:");
-//            System.out.println(actor);
-//            System.out.print("Confirmar ator? (s/n): ");
-//            if (!scanner.next().equalsIgnoreCase("s")) {
-//                System.out.println("Associação cancelada.");
-//                return;
-//            }
-//
-//
-//            //filmController.associarAtor(name)
-//            //System.out.println("Ator cadastrado com sucesso!");
-//
-//            System.out.print("Deseja adicionar outro ator? (s/n): ");
-//            addMore = scanner.next().equalsIgnoreCase("s");
-//
-//        }
-//
-//        System.out.println("Associação concluída");
+            System.out.print("Deseja adicionar outro ator? (s/n): ");
+            //TODO veficiar se ator ja foi associado e cancelar
+            if (scanner.next().equalsIgnoreCase("s")) {
+                addMore = true;
+            } else {
+                System.out.println();
+                System.out.println("Associação concluída");
+                return;
+            }
+
+        }
+
+
     }
 
+
     private void associateDirectorsAux() {
-//        System.out.println("==== Associar Diretor a Filme ====");
-//        System.out.print("Insira o nome do filme: ");
-//        String nameFilm = scanner.next();
+        System.out.println("==== Associar Diretor a Filme ====");
+        System.out.print("Insira o nome do filme: ");
+        String nameFilm = scanner.next();
+        Film films = filmController.findFilmByTitle(nameFilm);
+        if (films == null) {
+            System.out.println("Filme não encontrado.");
+            return;
+
+        }
+
+        System.out.println("Filme encontrado:");
+
+        System.out.println("------------------------------------------------");
+        System.out.println(films);
+        System.out.println("------------------------------------------------");
+        System.out.print("Confirmar filme? (s/n): ");
+        if (!scanner.next().equalsIgnoreCase("s")) {
+            System.out.println("Associação cancelada.");
+            return;
+        }
+
+        System.out.print("Insira o nome do diretor: ");
+        scanner.nextLine();
+        String nameDirector = scanner.nextLine();
+        Director director = directorController.findDirectorByName(nameDirector);
+        if (director == null) {
+            System.out.println("Diretor não encontrado.");
+
+            List<Director> directorList = directorController.findAllDirectors();
+
+            System.out.println("Lista de atores cadastrados: ");
+            System.out.println("------------------------------------------------");
+            System.out.println(directorList);
+            System.out.println("------------------------------------------------");
+
+            return;
+        }
+
+        System.out.println("Diretor encontrado:");
+        System.out.println("------------------------------------------------");
+        System.out.println(director);
+        System.out.println("------------------------------------------------");
+        System.out.print("Confirmar diretor? (s/n): ");
+        if (!scanner.next().equalsIgnoreCase("s")) {
+            System.out.println("Associação cancelada.");
+            return;
+        }
 //
-//        List<Film> films = filmController.searchByName (nameFilm);
-//        if (films == null) {
-//            System.out.println("Filme não encontrado.");
-//            return;
-//
-//        }
-//
-//        System.out.println("Filme encontrado:");
-//        System.out.println(film);
-//        System.out.print("Confirmar filme? (s/n): ");
-//        if (!scanner.next().equalsIgnoreCase("s")) {
-//            System.out.println("Associação cancelada.");
-//            return;
-//        }
-//
-//        System.out.print("Insira o nome do diretor: ");
-//            String nameDirector = scanner.next();
-//            Director director = directorController.searchByName(nameDirector);
-//            if (director == null) {
-//                System.out.println("Diretor não encontrado.");
-//                return;
-//            }
-//
-//        System.out.println("Diretor encontrado:");
-//        System.out.println(director);
-//        System.out.print("Confirmar diretor? (s/n): ");
-//        if (!scanner.next().equalsIgnoreCase("s")) {
-//            System.out.println("Associação cancelada.");
-//            return;
-//        }
-//
-//        filmController.associarDiretor(name);
+//        filmController.associarDiretor(nameFilm, nameDirector);
 //        System.out.println("Diretor cadastrado com sucesso!");
 //
+        System.out.println("Associação concluída");
+        return;
     }
-//
-//    System.out.println("Associação concluída");
+
 
     private void searchFilms() {
         System.out.println("==== Pesquisar Filmes ====");
@@ -313,6 +357,7 @@ public class Menu {
 
             }
         }
+
     }
 
 }
