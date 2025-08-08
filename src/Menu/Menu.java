@@ -57,14 +57,20 @@ public class Menu {
         System.out.print("Digite a opção desejada: ");
 
 
-        return scanner.nextInt();
+        while (!scanner.hasNextInt()) {
+            System.out.println("Entrada inválida. Digite um número.");
+            scanner.nextLine();
+        }
+        int opt = scanner.nextInt();
+        scanner.nextLine();
+        return opt;
     }
 
     private void registerFilmAux() {
 
         System.out.println("==== Cadastro de Filme ====");
         System.out.print("Título: ");
-        String title = scanner.next();
+        String title = scanner.nextLine();
 
         Film existingFilm = filmController.findFilmByTitle(title);
 
@@ -73,21 +79,21 @@ public class Menu {
             System.out.println(existingFilm);
         } else {
             System.out.print("Ano de lançamento: ");
-            String year = scanner.next();
+            String year = scanner.nextLine();
 
             System.out.print("Orçamento: ");
-            String budget = scanner.next();
+            String budget = scanner.nextLine();
 
             System.out.print("Sinopse: ");
-            String synopsis = scanner.next();
+            String synopsis = scanner.nextLine();
 
             System.out.print("Gênero: ");
-            String gender = scanner.next();
+            String gender = scanner.nextLine();
 
             System.out.print("Duração (em minutos): ");
-            String time = scanner.next();
+            String duration = scanner.nextLine();
 
-            filmController.createAndSaveFilm(title, year, budget, synopsis, gender, time);
+            filmController.createAndSaveFilm(title, year, budget, synopsis, gender, duration);
             System.out.println("Filme cadastrado com sucesso!");
         }
     }
