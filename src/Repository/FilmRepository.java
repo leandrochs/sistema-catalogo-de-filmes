@@ -5,20 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FilmRepository {
-    private List<Film> films = new ArrayList<Film>();
+    private final List<Film> films = new ArrayList<>();
 
-    public static void saveFilm(Film film) {
+    public void saveFilm(Film film) {
         films.add(film);
     }
 
-    public static List<Film> readAllFilms() {
-        return films;
+    public List<Film> findAll() {
+        return new ArrayList<>(films);
     }
 
-    public static List<Film> readFilmByName(String filmName) {
-        List<Film> filmsByName = films.stream()
-                .filter(film -> film.getName().equals(filmName))
-                .toList();
-        return filmsByName;
+    public List<Film> findByName(String name) {
+        return films.stream()
+                .filter(film -> film.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
     }
 }
