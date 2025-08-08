@@ -1,6 +1,7 @@
 package Menu;
 
 import Controller.ActorController;
+import Controller.DirectorController;
 import Controller.FilmController;
 import Model.Actor;
 import Model.Director;
@@ -15,11 +16,13 @@ import java.util.Scanner;
 public class Menu {
     private final FilmController filmController;
     private final ActorController actorController;
+    private final DirectorController directorController;
     final Scanner scanner = new Scanner(System.in);
 
-    public Menu(FilmController filmController, ActorController actorController) {
+    public Menu(FilmController filmController, ActorController actorController, DirectorController directorController) {
         this.filmController = filmController;
         this.actorController = actorController;
+        this.directorController = directorController;
     }
 
     public void start() {
@@ -138,21 +141,20 @@ public class Menu {
         System.out.print("Nome: ");
         String name = scanner.next();
 
-        //TODO implementar directorController e metodos
-//        Director existingDirector = directorController.findDirectorByName(name);
-//
-//        if (existingDirector != null) {
-//            System.out.println("O diretor já foi cadastrado anteriormente:");
-//            System.out.println(existingDirector);
-//        } else {
-//            LocalDate birthday = askForValidDateBR("Data de nascimento: ");
-//
-//            System.out.print("Nacionalidade: ");
-//            String nationality = scanner.next();
-//
-//            //directorController.cadastrarAtor(name, dof, nationality)
-//            //System.out.println("Diretor cadastrado com sucesso!");
-//        }
+        Director existingDirector = directorController.findDirectorByName(name);
+
+        if (existingDirector != null) {
+            System.out.println("O diretor já foi cadastrado anteriormente:");
+            System.out.println(existingDirector);
+        } else {
+            LocalDate birthday = askForValidDateBR("Data de nascimento: ");
+
+            System.out.print("Nacionalidade: ");
+            String nationality = scanner.next();
+
+            directorController.createAndSaveDirector(name, birthday, nationality);
+            System.out.println("Diretor cadastrado com sucesso!");
+        }
 
 
     }
