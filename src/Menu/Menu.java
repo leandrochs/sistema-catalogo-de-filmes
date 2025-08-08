@@ -8,9 +8,12 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Menu {
+    private final FilmController filmController;
     final Scanner scanner = new Scanner(System.in);
-    FilmRepository filmRepository = new FilmRepository();
-    FilmController filmController = new FilmController(filmRepository);
+
+    public Menu(FilmController filmController) {
+        this.filmController = filmController;
+    }
 
     public void start() {
         int option = 0;
