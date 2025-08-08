@@ -16,9 +16,9 @@ public class Menu {
                 case 1 -> registerFilmAux();
                 case 2 -> registerActorAux();
                 case 3 -> registerDirectorAux();
-                case 4 -> System.out.printf("associateActorsAux();");
-                case 5 -> System.out.printf("associateDirectorsAux();");
-                case 6 -> System.out.println("Pesquisar filme");
+                case 4 -> associateActorsAux();
+                case 5 -> associateDirectorsAux();
+                case 6 -> searchFilms();
                 case 0 -> System.out.println("Encerrando o programa. Até mais....");
                 default -> {
                     System.out.println("Opção Inválida! Tente novamente.");
@@ -58,24 +58,24 @@ public class Menu {
 
         System.out.println("==== Cadastro de Filme ====");
         System.out.print("Título: ");
-        String title = scanner.nextLine();
+        String title = scanner.next();
 
         System.out.print("Ano de lançamento: ");
-        int year = Integer.parseInt(scanner.nextLine());
+        int year = scanner.nextInt();
 
-        System.out.print("Orçamento");
+        System.out.print("Orçamento: ");
         double budget = scanner.nextDouble();
 
-        System.out.print("Sinopse");
-        String synopsis = scanner.nextLine();
+        System.out.print("Sinopse: ");
+        String synopsis = scanner.next();
 
         System.out.print("Gênero: ");
-        String gender = scanner.nextLine();
+        String gender = scanner.next();
 
-        System.out.print("Duração");
+        System.out.print("Duração (em minutos): ");
         int time = scanner.nextInt();
 
-        //filmeController.cadastrarFilme(title, year, budget, synopsis, gender, time);
+        //FilmController.cadastrarFilm(title, year, budget, synopsis, gender, time);
         //System.out.println("Filme cadastrado com sucesso!");
     }
 
@@ -83,14 +83,15 @@ public class Menu {
 
         System.out.println("==== Cadastro de Ator ====");
         System.out.print("Nome: ");
-        String name = scanner.nextLine();
+        String name = scanner.next();
 
         System.out.print("Data de nascimento (yyyy-MM-dd): ");
-        String dofText = scanner.nextLine();
+        String dofText = scanner.next();
         LocalDate dof = LocalDate.parse(dofText);
+        //devemos criar uma exceção aqui?
 
         System.out.print("Nacionalidade: ");
-        String nationality = scanner.nextLine();
+        String nationality = scanner.next();
 
         //actorController.cadastrarAtor(name, dof, nationality)
         //System.out.println("Ator cadastrado com sucesso!");
@@ -101,20 +102,155 @@ public class Menu {
 
         System.out.println("==== Cadastro de Diretor ====");
         System.out.print("Nome: ");
-        String name = scanner.nextLine();
+        String name = scanner.next();
 
         System.out.print("Data de nascimento (yyyy-MM-dd): ");
-        String dofText = scanner.nextLine();
+        String dofText = scanner.next();
         LocalDate dof = LocalDate.parse(dofText);
+        //devemos criar uma exceção aqui?
 
         System.out.print("Nacionalidade: ");
-        String nationality = scanner.nextLine();
+        String nationality = scanner.next();
 
         //directorController.cadastrarAtor(name, dof, nationality)
         //System.out.println("Diretor cadastrado com sucesso!");
 
     }
 
+    private void associateActorsAux() {
+//        System.out.println("==== Associar Atores a Filme ====");
+//        System.out.print("Insira o nome do filme: ");
+//        String nameFilm = scanner.next();
+//        List<Film> films = filmController.searchByName(nameFilm);
+//        if (films == null) {
+//            System.out.println("Filme não encontrado.");
+//            return;
+//        }
+//
+//        System.out.println("Filme encontrado:");
+//        System.out.println(film);
+//        System.out.print("Confirmar filme? (s/n): ");
+//        if (!scanner.next().equalsIgnoreCase("s")) {
+//            System.out.println("Associação cancelada.");
+//            return;
+//        }
+//
+//        boolean addMore = true;
+//
+//        while (addMore) {
+//            System.out.print("Insira o nome do ator: ");
+//            String nameActor = scanner.next();
+//            Actor actor = actorController.searchByName(nameActor);
+//            if (actor == null) {
+//                System.out.println("Ator não encontrado.");
+//                return;
+//            }
+//
+//            System.out.println("Ator encontrado:");
+//            System.out.println(actor);
+//            System.out.print("Confirmar ator? (s/n): ");
+//            if (!scanner.next().equalsIgnoreCase("s")) {
+//                System.out.println("Associação cancelada.");
+//                return;
+//            }
+//
+//
+//            //filmController.associarAtor(name)
+//            //System.out.println("Ator cadastrado com sucesso!");
+//
+//            System.out.print("Deseja adicionar outro ator? (s/n): ");
+//            addMore = scanner.next().equalsIgnoreCase("s");
+//
+//        }
+//
+//        System.out.println("Associação concluída");
+    }
+
+    private void associateDirectorsAux() {
+//        System.out.println("==== Associar Diretor a Filme ====");
+//        System.out.print("Insira o nome do filme: ");
+//        String nameFilm = scanner.next();
+//
+//        List<Film> films = filmController.searchByName (nameFilm);
+//        if (films == null) {
+//            System.out.println("Filme não encontrado.");
+//            return;
+//
+//        }
+//
+//        System.out.println("Filme encontrado:");
+//        System.out.println(film);
+//        System.out.print("Confirmar filme? (s/n): ");
+//        if (!scanner.next().equalsIgnoreCase("s")) {
+//            System.out.println("Associação cancelada.");
+//            return;
+//        }
+//
+//        System.out.print("Insira o nome do diretor: ");
+//            String nameDirector = scanner.next();
+//            Director director = directorController.searchByName(nameDirector);
+//            if (director == null) {
+//                System.out.println("Diretor não encontrado.");
+//                return;
+//            }
+//
+//        System.out.println("Diretor encontrado:");
+//        System.out.println(director);
+//        System.out.print("Confirmar diretor? (s/n): ");
+//        if (!scanner.next().equalsIgnoreCase("s")) {
+//            System.out.println("Associação cancelada.");
+//            return;
+//        }
+//
+//        filmController.associarDiretor(name);
+//        System.out.println("Diretor cadastrado com sucesso!");
+//
+    }
+//
+//    System.out.println("Associação concluída");
+
+    private void searchFilms() {
+//        System.out.println("==== Pesquisar Filmes ====");
+//        System.out.println("Escolha uma opção: ");
+//        System.out.println("---------------------");
+//        System.out.println("(A) Listar todos os filmes");
+//        System.out.println("(B) Pesquisar por palavra chave");
+//        System.out.println("(S) Sair");
+//        System.out.println("---------------------");
+//
+//        boolean running = true;
+//        while (running) {
+//            String option = scanner.next().toUpperCase();
+
+//            switch (option) {
+//                case "A" -> {
+//                    List<Film> films = filmController.listAll();
+//                    if (films.isEmpty()) {
+//                        System.out.println("Nenhum filme cadastrado.");
+//                    } else {
+//                        for (Film film : films) {
+//                            System.out.println(film);
+//                        }
+//                    }
+//                }
+//                case "B" -> {
+//                    System.out.printf("Digite uma palavra-chave:");
+//                    String keyword = scanner.next();
+//                    List<Film> films = filmController.searchByName(keyword);
+//                    if (films.isEmpty()) {
+//                        System.out.println("Nenhum filme encontrado.");
+//                    } else {
+//                        for (Film film : films) {
+//                            System.out.println(film);
+//                        }
+//                    }
+//                }
+//                case "S" -> running = false;
+//
+//                default -> System.out.println("Opção inválida");
+//
+//            }
+    }
 
 }
 
