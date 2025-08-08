@@ -39,22 +39,27 @@ public class Film {
     }
 
     public List<Actor> getActors() {
-        return actors;
+        return new ArrayList<>(actors);
     }
 
     public void setActors(List<Actor> actors) {
         this.actors = actors;
     }
 
+    public void addActor(Actor actor) {
+        this.actors.add(actor);
+    }
+
     @Override
     public String toString() {
         return "Título: " + title + "\n" +
                 "Ano de lançamento: " + releaseYear + "\n" +
-//                "Diretor: " + director.getName() + "\n" +  // Exibe o nome do diretor
                 "Gênero: " + gender + "\n" +
                 "Orçamento: R$ " + budget + "\n" +
                 "Sinopse: " + synopsis + "\n" +
-                "Duração: " + duration + " minutos";
+                "Duração: " + duration + " minutos" +
+                "Diretor: " + (director == null ? "Sem diretor cadastrado" : director) + "\n" +
+                "Actors: " + (actors == null ? "Sem atores cadastrados" : actors) + "\n";
     }
 }
 
