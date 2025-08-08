@@ -1,7 +1,9 @@
 import Controller.ActorController;
+import Controller.DirectorController;
 import Controller.FilmController;
 import Menu.Menu;
 import Repository.ActorRepository;
+import Repository.DirectorRepository;
 import Repository.FilmRepository;
 
 public class Main {
@@ -12,7 +14,10 @@ public class Main {
         ActorRepository actorRepository = new ActorRepository();
         ActorController actorController = new ActorController(actorRepository);
 
-        Menu menu = new Menu(filmController, actorController);
+        DirectorRepository directorRepository = new DirectorRepository();
+        DirectorController directorController = new DirectorController(directorRepository);
+
+        Menu menu = new Menu(filmController, actorController, directorController);
         menu.start();
 
     }

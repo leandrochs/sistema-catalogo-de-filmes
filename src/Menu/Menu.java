@@ -121,7 +121,9 @@ public class Menu {
 
         if (existingActor != null) {
             System.out.println("O ator já foi cadastrado anteriormente:");
-            System.out.println(existingActor);
+            System.out.println("------------------------------------------------");
+            System.out.print(existingActor);
+            System.out.println("------------------------------------------------");
         } else {
             LocalDate birthday = askForValidDateBR("Data de nascimento: ");
 
@@ -145,7 +147,9 @@ public class Menu {
 
         if (existingDirector != null) {
             System.out.println("O diretor já foi cadastrado anteriormente:");
-            System.out.println(existingDirector);
+            System.out.println("------------------------------------------------");
+            System.out.print(existingDirector);
+            System.out.println("------------------------------------------------");
         } else {
             LocalDate birthday = askForValidDateBR("Data de nascimento: ");
 
