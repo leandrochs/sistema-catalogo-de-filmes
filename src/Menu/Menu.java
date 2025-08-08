@@ -2,9 +2,13 @@ package Menu;
 
 import Controller.ActorController;
 import Controller.FilmController;
+import Model.Actor;
+import Model.Director;
 import Model.Film;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -108,20 +112,25 @@ public class Menu {
 
         System.out.println("==== Cadastro de Ator ====");
         System.out.print("Nome: ");
-        String name = scanner.next();
+        String name = scanner.nextLine();
 
-        System.out.print("Data de nascimento (yyyy-MM-dd): ");
-        String birthday = scanner.next();
-        LocalDate birthdayDate = LocalDate.parse(birthday);
-        //devemos criar uma exceção aqui?
+        Actor existingActor = actorController.findActorByName(name);
 
-        System.out.print("Nacionalidade: ");
-        String nationality = scanner.next();
+        if (existingActor != null) {
+            System.out.println("O ator já foi cadastrado anteriormente:");
+            System.out.println(existingActor);
+        } else {
+            LocalDate birthday = askForValidDateBR("Data de nascimento: ");
 
-        actorController.createAndSaveActor(name, birthdayDate, nationality);
-        System.out.println("Ator cadastrado com sucesso!");
+            System.out.print("Nacionalidade: ");
+            String nationality = scanner.next();
 
+            actorController.createAndSaveActor(name, birthday, nationality);
+            System.out.println("Ator cadastrado com sucesso!");
+
+        }
     }
+
 
     private void registerDirectorAux() {
 
@@ -129,17 +138,39 @@ public class Menu {
         System.out.print("Nome: ");
         String name = scanner.next();
 
-        System.out.print("Data de nascimento (yyyy-MM-dd): ");
-        String dofText = scanner.next();
-        LocalDate dof = LocalDate.parse(dofText);
-        //devemos criar uma exceção aqui?
+        //TODO implementar directorController e metodos
+//        Director existingDirector = directorController.findDirectorByName(name);
+//
+//        if (existingDirector != null) {
+//            System.out.println("O diretor já foi cadastrado anteriormente:");
+//            System.out.println(existingDirector);
+//        } else {
+//            LocalDate birthday = askForValidDateBR("Data de nascimento: ");
+//
+//            System.out.print("Nacionalidade: ");
+//            String nationality = scanner.next();
+//
+//            //directorController.cadastrarAtor(name, dof, nationality)
+//            //System.out.println("Diretor cadastrado com sucesso!");
+//        }
 
-        System.out.print("Nacionalidade: ");
-        String nationality = scanner.next();
 
-        //directorController.cadastrarAtor(name, dof, nationality)
-        //System.out.println("Diretor cadastrado com sucesso!");
+    }
 
+    //  validar data de nascimento + formato personalizado
+    LocalDate askForValidDateBR(String message) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        while (true) {
+            System.out.print(message);
+            String birthday = scanner.next();
+
+            try {
+                return LocalDate.parse(birthday, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato inválido! Use o padrão dd/MM/yyyy.");
+            }
+        }
     }
 
     private void associateActorsAux() {
