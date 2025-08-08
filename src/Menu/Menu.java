@@ -1,10 +1,15 @@
 package Menu;
 
+import Controller.FilmController;
+import Repository.FilmRepository;
+
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Menu {
     final Scanner scanner = new Scanner(System.in);
+    FilmRepository filmRepository = new FilmRepository();
+    FilmController filmController = new FilmController(filmRepository);
 
     public void start() {
         int option = 0;
@@ -61,10 +66,10 @@ public class Menu {
         String title = scanner.next();
 
         System.out.print("Ano de lançamento: ");
-        int year = scanner.nextInt();
+        String year = scanner.next();
 
         System.out.print("Orçamento: ");
-        double budget = scanner.nextDouble();
+        String budget = scanner.next();
 
         System.out.print("Sinopse: ");
         String synopsis = scanner.next();
@@ -73,10 +78,10 @@ public class Menu {
         String gender = scanner.next();
 
         System.out.print("Duração (em minutos): ");
-        int time = scanner.nextInt();
+        String time = scanner.next();
 
-        //FilmController.cadastrarFilm(title, year, budget, synopsis, gender, time);
-        //System.out.println("Filme cadastrado com sucesso!");
+        filmController.createAndSaveFilm(title, year, budget, synopsis, gender, time);
+        System.out.println("Filme cadastrado com sucesso!");
     }
 
     private void registerActorAux() {
