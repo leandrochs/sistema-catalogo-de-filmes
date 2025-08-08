@@ -1,6 +1,7 @@
 package Menu;
 
 import Controller.FilmController;
+import Model.Film;
 import Repository.FilmRepository;
 
 import java.time.LocalDate;
@@ -65,23 +66,30 @@ public class Menu {
         System.out.print("Título: ");
         String title = scanner.next();
 
-        System.out.print("Ano de lançamento: ");
-        String year = scanner.next();
+        Film existingFilm = filmController.findFilmByTitle(title);
 
-        System.out.print("Orçamento: ");
-        String budget = scanner.next();
+        if (existingFilm != null) {
+            System.out.println("O filme já foi cadastrado anteriormente:");
+            System.out.println(existingFilm);
+        } else {
+            System.out.print("Ano de lançamento: ");
+            String year = scanner.next();
 
-        System.out.print("Sinopse: ");
-        String synopsis = scanner.next();
+            System.out.print("Orçamento: ");
+            String budget = scanner.next();
 
-        System.out.print("Gênero: ");
-        String gender = scanner.next();
+            System.out.print("Sinopse: ");
+            String synopsis = scanner.next();
 
-        System.out.print("Duração (em minutos): ");
-        String time = scanner.next();
+            System.out.print("Gênero: ");
+            String gender = scanner.next();
 
-        filmController.createAndSaveFilm(title, year, budget, synopsis, gender, time);
-        System.out.println("Filme cadastrado com sucesso!");
+            System.out.print("Duração (em minutos): ");
+            String time = scanner.next();
+
+            filmController.createAndSaveFilm(title, year, budget, synopsis, gender, time);
+            System.out.println("Filme cadastrado com sucesso!");
+        }
     }
 
     private void registerActorAux() {

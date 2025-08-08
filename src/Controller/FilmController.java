@@ -10,8 +10,8 @@ public class FilmController {
         this.repository = repository;
     }
 
-    public Film findFilmByName(String name) {
-        return (Film) repository.findByName(name);
+    public Film findFilmByTitle(String title) {
+        return (Film) repository.findByTitle(title);
     }
 
     public Film createAndSaveFilm(String title, String year, String budget, String synopsis, String gender, String time) {
