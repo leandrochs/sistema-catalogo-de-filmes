@@ -8,14 +8,16 @@ import Repository.FilmRepository;
 
 public class Main {
     public static void main(String[] args) {
-        FilmRepository filmRepository = new FilmRepository();
-        FilmController filmController = new FilmController(filmRepository);
-
         ActorRepository actorRepository = new ActorRepository();
         ActorController actorController = new ActorController(actorRepository);
 
         DirectorRepository directorRepository = new DirectorRepository();
         DirectorController directorController = new DirectorController(directorRepository);
+
+        FilmRepository filmRepository = new FilmRepository();
+        FilmController filmController = new FilmController(
+                filmRepository, actorRepository,directorRepository
+        );
 
         Menu menu = new Menu(filmController, actorController, directorController);
         menu.start();

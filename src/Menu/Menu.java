@@ -186,7 +186,7 @@ public class Menu {
     private void associateActorsAux() {
         System.out.println("==== Associar Atores a Filme ====");
         System.out.print("Insira o nome do filme: ");
-        String nameFilm = scanner.next();
+        String nameFilm = scanner.nextLine();
         Film films = filmController.findFilmByTitle(nameFilm);
         if (films == null) {
             System.out.println();
@@ -237,11 +237,15 @@ public class Menu {
                 System.out.println("Associação cancelada.");
                 return;
             }
-//
-//
-//            //TODO filmController.associarAtor(nameFilm, nameActor)
-            System.out.println("Ator associado com sucesso!");
-//
+
+
+            boolean isSucess = filmController.associateActorToFilm(nameFilm, nameActor);
+            if (isSucess) {
+                System.out.println("Ator associado com sucesso!");
+            }  else {
+                System.out.println("Falha ao associar ator ao filme!");
+            }
+
             System.out.print("Deseja adicionar outro ator? (s/n): ");
             //TODO veficiar se ator ja foi associado e cancelar
             if (scanner.next().equalsIgnoreCase("s")) {
@@ -261,7 +265,7 @@ public class Menu {
     private void associateDirectorsAux() {
         System.out.println("==== Associar Diretor a Filme ====");
         System.out.print("Insira o nome do filme: ");
-        String nameFilm = scanner.next();
+        String nameFilm = scanner.nextLine();
         Film films = filmController.findFilmByTitle(nameFilm);
         if (films == null) {
             System.out.println("Filme não encontrado.");
@@ -306,10 +310,14 @@ public class Menu {
             System.out.println("Associação cancelada.");
             return;
         }
-//
-//        filmController.associarDiretor(nameFilm, nameDirector);
-//        System.out.println("Diretor cadastrado com sucesso!");
-//
+
+        boolean isSucess = filmController.associateDirectorToFilm(nameFilm, nameDirector);
+        if (isSucess) {
+            System.out.println("Diretor cadastrado com sucesso!");
+        }  else {
+            System.out.println("Falha ao associar diretor ao filme!");
+        }
+
         System.out.println("Associação concluída");
         return;
     }
@@ -341,7 +349,7 @@ public class Menu {
                 }
                 case "B" -> {
                     System.out.printf("Digite uma palavra-chave:");
-                    String keyword = scanner.next();
+                    String keyword = scanner.nextLine();
                     List<Film> films = filmController.findFilmsByKeyword(keyword);
                     if (films.isEmpty()) {
                         System.out.println("Nenhum filme encontrado.");

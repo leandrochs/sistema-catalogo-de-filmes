@@ -1,5 +1,8 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Film {
     private final String title;
     private final String releaseYear;
@@ -8,7 +11,7 @@ public class Film {
     private final String gender;
     private final String duration;
     private Director director;
-    private Actor actor;
+    private List<Actor> actors = new ArrayList<>();
 
     public Film(String title, String releaseYear, String budget, String synopsis, String gender, String duration) {
         this.title = title;
@@ -19,7 +22,6 @@ public class Film {
         this.duration = duration;
     }
 
-    // Métodos Getter necessários
     public String getTitle() {
         return title;
     }
@@ -32,15 +34,32 @@ public class Film {
         return director;  // Retorna o objeto Diretor
     }
 
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public List<Actor> getActors() {
+        return new ArrayList<>(actors);
+    }
+
+    public void setActors(List<Actor> actors) {
+        this.actors = actors;
+    }
+
+    public void addActor(Actor actor) {
+        this.actors.add(actor);
+    }
+
     @Override
     public String toString() {
         return "Título: " + title + "\n" +
                 "Ano de lançamento: " + releaseYear + "\n" +
-//                "Diretor: " + director.getName() + "\n" +  // Exibe o nome do diretor
                 "Gênero: " + gender + "\n" +
                 "Orçamento: R$ " + budget + "\n" +
                 "Sinopse: " + synopsis + "\n" +
-                "Duração: " + duration + " minutos";
+                "Duração: " + duration + " minutos" +
+                "Diretor: " + (director == null ? "Sem diretor cadastrado" : director) + "\n" +
+                "Actors: " + (actors == null ? "Sem atores cadastrados" : actors) + "\n";
     }
 }
 
