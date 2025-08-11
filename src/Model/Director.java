@@ -20,7 +20,7 @@ public class Director {
 
     @Override
     public String toString() {
-        return "Diretor: " + name + "\n" +
+        return name + "\n" +
                 "Data de Nascimento: " + birthday + "\n" +
                 "Nacionalidade: " + nationality + "\n";
     }
