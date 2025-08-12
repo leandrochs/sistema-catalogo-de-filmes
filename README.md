@@ -1,12 +1,12 @@
 ## Sistema de Catálogo de Filmes
 
-Este sistema permite gerenciar um catálogo de filmes com funcionalidades como cadastro de filmes, atores, diretores, e pesquisa de filmes por nome. O projeto utiliza os conceitos de **Programação Orientada a Objetos (POO)**, incluindo **encapsulamento**, **herança**, **polimorfismo**, e **classes abstratas**.
+Este sistema permite gerenciar um catálogo de filmes com funcionalidades como cadastro de filmes, atores, diretores, e pesquisa de filmes por nome. O projeto utiliza os conceitos de **Programação Orientada a Objetos (POO)**, incluindo **encapsulamento**, **herança**, **polimorfismo**.
 
 ## Funcionalidades
 
 - Cadastrar Filmes: Permite cadastrar filmes com informações como nome, data de lançamento, orçamento e descrição.
 - Cadastrar Atores e Diretores: Permite cadastrar atores e diretores com suas informações pessoais.
-- Associar Atores e Diretores aos Filmes**: É possível associar atores e diretores aos filmes cadastrados.
+- Associar Atores e Diretores aos Filmes: É possível associar atores e diretores aos filmes cadastrados.
 - Pesquisar Filmes: O sistema permite pesquisar filmes pelo nome, desconsiderando letras maiúsculas e minúsculas.
 
 ## Estrutura do Projeto
@@ -77,9 +77,8 @@ Este sistema permite gerenciar um catálogo de filmes com funcionalidades como c
 ## Conceitos Usados
 
 - Encapsulamento: As classes encapsulam dados, e o acesso a esses dados é feito por métodos específicos.
-- Herança: As classes `Ator` e `Diretor` herdam de uma estrutura comum, reutilizando atributos e métodos.
+- Herança: Não é mais usada, pois `Ator` e `Diretor` são classes independentes.
 - Polimorfismo: O método `toString` é polimórfico, com implementações diferentes nas classes `Ator` e `Diretor`.
-- Classes Abstratas: A estrutura de classes abstratas permite centralizar comportamentos comuns e especializar funcionalidades em classes derivadas.
 
 ## Estrutura de Pastas
 
