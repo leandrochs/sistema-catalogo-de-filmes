@@ -77,7 +77,7 @@ Este sistema permite gerenciar um catálogo de filmes com funcionalidades como c
 ## Conceitos Usados
 
 - Encapsulamento: As classes encapsulam dados, e o acesso a esses dados é feito por métodos específicos.
-- Herança: Não é mais usada, pois `Ator` e `Diretor` são classes independentes.
+- Herança: As classes `Ator` e `Diretor` herdam de uma estrutura comum, reutilizando atributos e métodos.
 - Polimorfismo: O método `toString` é polimórfico, com implementações diferentes nas classes `Ator` e `Diretor`.
 
 ## Estrutura de Pastas
