@@ -57,9 +57,9 @@ public class Film {
                 "Gênero: " + gender + "\n" +
                 "Orçamento: R$ " + budget + "\n" +
                 "Sinopse: " + synopsis + "\n" +
-                "Duração: " + duration + " minutos" +
+                "Duração: " + duration + " minutos" + "\n" +
                 "Diretor: " + (director == null ? "Sem diretor cadastrado" : director) + "\n" +
-                "Actors: " + (actors == null ? "Sem atores cadastrados" : actors) + "\n";
+                "Atores: " + (actors == null ? "Sem atores cadastrados" : actors + "\n");
     }
 }
 

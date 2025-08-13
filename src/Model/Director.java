@@ -2,27 +2,10 @@ package Model;
 
 import java.time.LocalDate;
 
-public class Director {
-    private String name;
-    private final LocalDate birthday;
-    private final String nationality;
-
+public class Director extends Person {
 
     public Director(String name, LocalDate birthday, String nationality) {
-        this.name = name;
-        this.birthday = birthday;
-        this.nationality = nationality;
-    }
+        super(name, birthday, nationality);
 
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return "Diretor: " + name + "\n" +
-                "Data de Nascimento: " + birthday + "\n" +
-                "Nacionalidade: " + nationality + "\n";
     }
 }
-

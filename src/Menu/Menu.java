@@ -167,7 +167,6 @@ public class Menu {
 
     }
 
-    //  validar data de nascimento + formato personalizado
     LocalDate askForValidDateBR(String message) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
