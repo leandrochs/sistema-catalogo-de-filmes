@@ -318,44 +318,49 @@ public class Menu {
         }
 
         System.out.println("Associação concluída");
-        return;
     }
 
 
     private void searchFilms() {
-        System.out.println("==== Pesquisar Filmes ====");
-        System.out.println("Escolha uma opção: ");
-        System.out.println("---------------------");
-        System.out.println("(A) Listar todos os filmes");
-        System.out.println("(B) Pesquisar por palavra chave");
-        System.out.println("(S) Sair");
-        System.out.println("---------------------");
-
         boolean running = true;
         while (running) {
+            System.out.println("==== Pesquisar Filmes ====");
+            System.out.println("Escolha uma opção: ");
+            System.out.println("---------------------");
+            System.out.println("(A) Listar todos os filmes");
+            System.out.println("(B) Pesquisar por palavra chave");
+            System.out.println("(S) Sair");
+            System.out.println("---------------------");
             String option = scanner.next().toUpperCase();
 
             switch (option) {
                 case "A" -> {
                     List<Film> films = filmController.findAllFilms();
                     if (films.isEmpty()) {
+                        System.out.println();
+                        System.out.println("______________________");
                         System.out.println("Nenhum filme cadastrado.");
+                        System.out.println("______________________");
+                        System.out.println();
                     } else {
                         for (Film film : films) {
                             System.out.println(film);
-                        }
+                         }
                     }
                 }
                 case "B" -> {
-                    System.out.printf("Digite uma palavra-chave:");
+                    System.out.print("Digite uma palavra-chave: ");
+                    scanner.nextLine();
                     String keyword = scanner.nextLine();
                     List<Film> films = filmController.findFilmsByKeyword(keyword);
                     if (films.isEmpty()) {
+                        System.out.println();
+                        System.out.println("______________________");
                         System.out.println("Nenhum filme encontrado.");
+                        System.out.println("______________________");
+                        System.out.println();
                     } else {
-                        for (Film film : films) {
-                            System.out.println(film);
-                        }
+                        System.out.println(films);
                     }
                 }
                 case "S" -> running = false;
