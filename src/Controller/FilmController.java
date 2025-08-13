@@ -28,7 +28,7 @@ public class FilmController {
         return (Film) filmRepository.findByTitle(title);
     }
 
-    public void createAndSaveFilm(String title, String year, String budget, String synopsis, String gender, String duration) {
+    public void createAndSaveFilm(String title, int year, String budget, String synopsis, String gender, int duration) {
         Film film = new Film(title, year, budget, synopsis, gender, duration);
         filmRepository.saveFilm(film);
     }

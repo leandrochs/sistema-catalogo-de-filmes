@@ -6,8 +6,6 @@ import Controller.FilmController;
 import Model.Actor;
 import Model.Director;
 import Model.Film;
-import Repository.FilmRepository;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -56,7 +54,7 @@ public class Menu {
         System.out.println();
         System.out.println("========================================");
         System.out.println("            Bem-vindo ao sistema       ");
-        System.out.println("        de Catalogo de Filmes       ");
+        System.out.println("           de Catalogo de Filmes       ");
         System.out.println("========================================");
         System.out.println("Escolha uma opção:");
         System.out.println("----------------------------------------");
@@ -93,19 +91,21 @@ public class Menu {
             System.out.println(existingFilm);
         } else {
             System.out.print("Ano de lançamento: ");
-            String year = scanner.nextLine();
-//          Esta recebendo String
+            int year = scanner.nextInt();
+
             System.out.print("Orçamento: ");
-            String budget = scanner.nextLine();
+            String budget = scanner.next();
 
             System.out.print("Sinopse: ");
+            scanner.nextLine();
             String synopsis = scanner.nextLine();
 
             System.out.print("Gênero: ");
             String gender = scanner.nextLine();
 
             System.out.print("Duração (em minutos): ");
-            String duration = scanner.nextLine();
+            int duration = scanner.nextInt();
+            scanner.nextLine();
 
             filmController.createAndSaveFilm(title, year, budget, synopsis, gender, duration);
             System.out.println();

@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Film {
     private final String title;
-    private final String releaseYear;
+    private final int releaseYear;
     private final String budget;
     private final String synopsis;
     private final String gender;
-    private final String duration;
+    private final int duration;
     private Director director;
     private List<Actor> actors = new ArrayList<>();
 
-    public Film(String title, String releaseYear, String budget, String synopsis, String gender, String duration) {
+    public Film(String title, int releaseYear, String budget, String synopsis, String gender, int duration) {
         this.title = title;
         this.releaseYear = releaseYear;
         this.budget = budget;
@@ -26,7 +26,7 @@ public class Film {
         return title;
     }
 
-    public String getReleaseYear() {
+    public int getReleaseYear() {
         return releaseYear;
     }
 
